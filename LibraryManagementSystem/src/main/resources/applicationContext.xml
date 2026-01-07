@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="author1" class="org.example.Author">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Sazzad"/>
+    </bean>
+
+    <bean id="author2" class="org.example.Author">
+        <constructor-arg value="2"/>
+        <constructor-arg value="Sayem"/>
+    </bean>
+
+    <bean id="book1" class="org.example.Book">
+        <constructor-arg ref="author1"/>
+        <constructor-arg value="11" type="int"/>
+        <constructor-arg value="English Literature Book"/>
+    </bean>
+
+    <bean id="book2" class="org.example.Book">
+        <constructor-arg ref="author2"/>
+        <constructor-arg value="22" type="int"/>
+        <constructor-arg value="Spanish Book"/>
+        <property name="author" ref="author2"/>
+    </bean>
+
+    <bean id="library" class="org.example.Library" scope="prototype">
+        <constructor-arg>
+            <list>
+                <ref bean="book1"/>
+                <ref bean="book2"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg value="XYZ123sdnfj89"/>
+        <constructor-arg value="XYZ Library"/>
+    </bean>
+
+</beans>
